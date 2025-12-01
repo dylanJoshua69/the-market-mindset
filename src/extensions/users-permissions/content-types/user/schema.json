@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users",
+  "info": {
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "pluginOptions": {
+    "users-permissions": {
+      "enabled": true
+    }
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "required": true,
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "required": true,
+      "unique": true
+    },
+    "provider": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "required": true
+    },
+    "resetPasswordToken": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string"
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    }
+  }
+}

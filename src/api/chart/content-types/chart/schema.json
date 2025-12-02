@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "charts",
+  "info": {
+    "singularName": "chart",
+    "pluralName": "charts",
+    "displayName": "Charts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "widgetType": {
+      "type": "enumeration",
+      "enum": [
+        "Ticker",
+        "mini",
+        "full"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

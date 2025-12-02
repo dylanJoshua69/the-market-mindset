@@ -573,6 +573,42 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSignalSignal extends Struct.CollectionTypeSchema {
+  collectionName: 'signals';
+  info: {
+    displayName: 'Signal';
+    pluralName: 'signals';
+    singularName: 'signal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direction: Schema.Attribute.Enumeration<['buy', 'sell']>;
+    entryPrice: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::signal.signal'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Blocks;
+    pair: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    riskReward: Schema.Attribute.Decimal;
+    stopLoss: Schema.Attribute.Decimal;
+    takeProfit: Schema.Attribute.Decimal;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    verified: Schema.Attribute.Boolean;
+    visible: Schema.Attribute.Boolean;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1094,6 +1130,7 @@ declare module '@strapi/strapi' {
       'api::chart.chart': ApiChartChart;
       'api::course.course': ApiCourseCourse;
       'api::lesson.lesson': ApiLessonLesson;
+      'api::signal.signal': ApiSignalSignal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

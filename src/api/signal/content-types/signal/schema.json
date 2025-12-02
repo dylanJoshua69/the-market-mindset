@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "signals",
+  "info": {
+    "singularName": "signal",
+    "pluralName": "signals",
+    "displayName": "Signal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pair": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "buy",
+        "sell"
+      ]
+    },
+    "entryPrice": {
+      "type": "decimal"
+    },
+    "stopLoss": {
+      "type": "decimal"
+    },
+    "takeProfit": {
+      "type": "decimal"
+    },
+    "riskReward": {
+      "type": "decimal"
+    },
+    "notes": {
+      "type": "blocks"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "type": "boolean"
+    }
+  }
+}

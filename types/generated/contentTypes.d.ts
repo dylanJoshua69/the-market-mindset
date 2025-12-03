@@ -465,6 +465,37 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBotUserBotUser extends Struct.CollectionTypeSchema {
+  collectionName: 'bot_users';
+  info: {
+    displayName: 'bot-users';
+    pluralName: 'bot-users';
+    singularName: 'bot-user';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bot-user.bot-user'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    preferences: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    telegram_id: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiChartChart extends Struct.CollectionTypeSchema {
   collectionName: 'charts';
   info: {
@@ -1196,6 +1227,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::bot-user.bot-user': ApiBotUserBotUser;
       'api::chart.chart': ApiChartChart;
       'api::course.course': ApiCourseCourse;
       'api::lesson.lesson': ApiLessonLesson;

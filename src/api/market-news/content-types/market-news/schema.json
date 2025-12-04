@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "market_newses",
+  "info": {
+    "singularName": "market-news",
+    "pluralName": "market-newses",
+    "displayName": "Market News"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "url": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "published": {
+      "type": "datetime"
+    },
+    "tickers": {
+      "type": "json"
+    },
+    "image_url": {
+      "type": "string"
+    }
+  }
+}

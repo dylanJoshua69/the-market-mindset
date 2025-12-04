@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trade_signals",
+  "info": {
+    "singularName": "trade-signal",
+    "pluralName": "trade-signals",
+    "displayName": "Trade Signals"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "pair": {
+      "type": "enumeration",
+      "enum": [
+        "XAUUSD",
+        "BTCUSD",
+        "EURUSD",
+        "GBPJPY",
+        "US30",
+        "NAS100",
+        "SPX500"
+      ]
+    },
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "Buy",
+        "Sell",
+        "Buy Limit",
+        "Sell Limit",
+        "Buy Stop",
+        "Sell Stop"
+      ]
+    },
+    "entry_price": {
+      "type": "decimal"
+    },
+    "stop_loss": {
+      "type": "decimal"
+    },
+    "take_profit_1": {
+      "type": "decimal"
+    },
+    "take_profit_2": {
+      "type": "decimal"
+    },
+    "take_profit_3": {
+      "type": "decimal"
+    },
+    "analysis": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "trade_status": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Hit TP",
+        "Hit SL",
+        "Closed Early",
+        "Expired"
+      ]
+    },
+    "broadcasted": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

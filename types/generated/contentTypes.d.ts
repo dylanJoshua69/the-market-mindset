@@ -489,7 +489,7 @@ export interface ApiBotUserBotUser extends Struct.CollectionTypeSchema {
     phone: Schema.Attribute.String;
     preferences: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    telegram_id: Schema.Attribute.Integer;
+    telegram_id: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -706,6 +706,51 @@ export interface ApiStaticPageStaticPage extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     visible: Schema.Attribute.Boolean;
+  };
+}
+
+export interface ApiTradeSignalTradeSignal extends Struct.CollectionTypeSchema {
+  collectionName: 'trade_signals';
+  info: {
+    displayName: 'Trade Signals';
+    pluralName: 'trade-signals';
+    singularName: 'trade-signal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    analysis: Schema.Attribute.Blocks;
+    broadcasted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direction: Schema.Attribute.Enumeration<
+      ['Buy', 'Sell', 'Buy Limit', 'Sell Limit', 'Buy Stop', 'Sell Stop']
+    >;
+    entry_price: Schema.Attribute.Decimal;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::trade-signal.trade-signal'
+    > &
+      Schema.Attribute.Private;
+    pair: Schema.Attribute.Enumeration<
+      ['XAUUSD', 'BTCUSD', 'EURUSD', 'GBPJPY', 'US30', 'NAS100', 'SPX500']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    stop_loss: Schema.Attribute.Decimal;
+    take_profit_1: Schema.Attribute.Decimal;
+    take_profit_2: Schema.Attribute.Decimal;
+    take_profit_3: Schema.Attribute.Decimal;
+    title: Schema.Attribute.String;
+    trade_status: Schema.Attribute.Enumeration<
+      ['Active', 'Hit TP', 'Hit SL', 'Closed Early', 'Expired']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1234,6 +1279,7 @@ declare module '@strapi/strapi' {
       'api::promotion.promotion': ApiPromotionPromotion;
       'api::signal.signal': ApiSignalSignal;
       'api::static-page.static-page': ApiStaticPageStaticPage;
+      'api::trade-signal.trade-signal': ApiTradeSignalTradeSignal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

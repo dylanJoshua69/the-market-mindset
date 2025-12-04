@@ -18,7 +18,7 @@
       "type": "string"
     },
     "telegram_id": {
-      "type": "integer"
+      "type": "biginteger"
     },
     "preferences": {
       "type": "string"

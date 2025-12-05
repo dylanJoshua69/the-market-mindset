@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "market_charts",
+  "info": {
+    "singularName": "market-chart",
+    "pluralName": "market-charts",
+    "displayName": "market-chart"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pair": {
+      "type": "string"
+    },
+    "timeframe": {
+      "type": "string"
+    },
+    "chart_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "last_updated": {
+      "type": "datetime"
+    }
+  }
+}

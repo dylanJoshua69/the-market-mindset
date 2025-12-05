@@ -604,6 +604,39 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMarketChartMarketChart extends Struct.CollectionTypeSchema {
+  collectionName: 'market_charts';
+  info: {
+    displayName: 'market-chart';
+    pluralName: 'market-charts';
+    singularName: 'market-chart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    chart_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    last_updated: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::market-chart.market-chart'
+    > &
+      Schema.Attribute.Private;
+    pair: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    timeframe: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMarketNewsMarketNews extends Struct.CollectionTypeSchema {
   collectionName: 'market_newses';
   info: {
@@ -1310,6 +1343,7 @@ declare module '@strapi/strapi' {
       'api::chart.chart': ApiChartChart;
       'api::course.course': ApiCourseCourse;
       'api::lesson.lesson': ApiLessonLesson;
+      'api::market-chart.market-chart': ApiMarketChartMarketChart;
       'api::market-news.market-news': ApiMarketNewsMarketNews;
       'api::promotion.promotion': ApiPromotionPromotion;
       'api::signal.signal': ApiSignalSignal;
